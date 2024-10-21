@@ -1,45 +1,45 @@
-import IndexPage from 'components/IndexPage'
-import PreviewIndexPage from 'components/PreviewIndexPage'
-import { readToken } from 'lib/sanity.api'
-import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
-import { Post, Settings } from 'lib/sanity.queries'
-import { GetStaticProps } from 'next'
-import type { SharedPageProps } from 'pages/_app'
+import React from 'react'
+import Lcdi from '../assets/lcdi.png'
+import Image from 'next/image'
+import { ArrowRightIcon } from '@sanity/icons'
+import HeroComponent from 'components/HeroComponent'
+import AboutusComponent from 'components/AboutusComponent'
 
-interface PageProps extends SharedPageProps {
-  posts: Post[]
-  settings: Settings
-}
+export default function index() {
+  return (
+    <div className="bg-[#FDFBE6]">
+      <div className=" py-4 max-w-screen-xl mx-auto px-10 w-full">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <Image src={Lcdi} alt="LCDI" className="h-8 w-9" />
+            <h1 className="font-[600] text-[19px]">LCDI</h1>
+          </div>
+          <div className="flex items-center space-x-6">
+            <h1 className="text-[14px] cursor-pointer">Home</h1>
+            <h1 className="text-[14px] cursor-pointer">About Us</h1>
+            <h1 className="text-[14px] cursor-pointer">Services</h1>
+            <h1 className="text-[14px] cursor-pointer">Contact Us</h1>
+          </div>
 
-interface Query {
-  [key: string]: string
-}
+          <div className="z-20 flex items-start">
+            <div className="flex items-center space-x-2 bg-[#E17153] rounded-full py-3 px-6 cursor-pointer hover:animate-pulse">
+              <h1 className="text-[14px] text-white">Join our community</h1>
+              <ArrowRightIcon color="#fff" stroke="3px" fontSize={18} />
+            </div>
+          </div>
+          <div></div>
+          <div className="absolute h-[1200px] bg-[#00715D] w-[40%] right-0"></div>
+        </div>
 
-export default function Page(props: PageProps) {
-  const { posts, settings, draftMode } = props
-
-  if (draftMode) {
-    return <PreviewIndexPage posts={posts} settings={settings} />
-  }
-
-  return <IndexPage posts={posts} settings={settings} />
-}
-
-export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
-  const { draftMode = false } = ctx
-  const client = getClient(draftMode ? { token: readToken } : undefined)
-
-  const [settings, posts = []] = await Promise.all([
-    getSettings(client),
-    getAllPosts(client),
-  ])
-
-  return {
-    props: {
-      posts,
-      settings,
-      draftMode,
-      token: draftMode ? readToken : '',
-    },
-  }
+        <div className='mt-40'>
+          {/*HERO SECTION*/}
+          <HeroComponent />
+        </div>
+        <div className='mt-20'>
+          {/*ABOUT US SECTION*/}
+          <AboutusComponent />
+        </div>
+      </div>
+    </div>
+  )
 }
