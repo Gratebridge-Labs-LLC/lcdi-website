@@ -25,7 +25,7 @@ export default function AboutusComponent() {
                 psychosocial support.
               </h1>
             </div>
-            <div className="space-y-2 mt-6">
+            <div className="space-y-2 mt-16">
               <h1 className="text-[#3E3838] font-[600]">Our Vision</h1>
               <h1 className="text-[#787070] font-[400] text-[14px]">
                 To empower communities through research, advocacy, and

@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { ArrowRightIcon } from '@sanity/icons'
 import HeroComponent from 'components/HeroComponent'
 import AboutusComponent from 'components/AboutusComponent'
+import ThematicAreas from 'components/ThematicAreas'
+import BlogHighlightSection from 'components/BlogHighlightSection'
 
 export default function index() {
   return (
@@ -38,6 +40,14 @@ export default function index() {
         <div className='mt-20'>
           {/*ABOUT US SECTION*/}
           <AboutusComponent />
+        </div>
+        <div className='mt-20'>
+          {/*THEMATIC AREAS SECTION*/}
+          <ThematicAreas />
+        </div>
+        <div className='mt-20'>
+          {/*BLOG HIGHLIGHT SECTION*/}
+          <BlogHighlightSection />
         </div>
       </div>
     </div>
