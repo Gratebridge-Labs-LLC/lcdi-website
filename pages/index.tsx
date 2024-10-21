@@ -6,8 +6,25 @@ import HeroComponent from 'components/HeroComponent'
 import AboutusComponent from 'components/AboutusComponent'
 import ThematicAreas from 'components/ThematicAreas'
 import BlogHighlightSection from 'components/BlogHighlightSection'
+import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
+import type { SharedPageProps } from 'pages/_app'
+import { Post, Settings } from 'lib/sanity.queries'
+import { GetStaticProps } from 'next'
+import { readToken } from 'lib/sanity.api'
+import Footer from 'components/Footer'
 
-export default function index() {
+interface PageProps extends SharedPageProps {
+  posts: Post[]
+  settings: Settings
+}
+
+interface Query {
+  [key: string]: string
+}
+
+export default function index(props: PageProps) {
+  const { posts, settings, draftMode } = props
+
   return (
     <div className="bg-[#FDFBE6]">
       <div className=" py-4 max-w-screen-xl mx-auto px-10 w-full">
@@ -33,23 +50,51 @@ export default function index() {
           <div className="absolute h-[1200px] bg-[#00715D] w-[40%] right-0"></div>
         </div>
 
-        <div className='mt-40'>
+        <div className="mt-40">
           {/*HERO SECTION*/}
           <HeroComponent />
         </div>
-        <div className='mt-20'>
+        <div className="mt-20">
           {/*ABOUT US SECTION*/}
           <AboutusComponent />
         </div>
-        <div className='mt-20'>
+        <div className="mt-32">
           {/*THEMATIC AREAS SECTION*/}
           <ThematicAreas />
         </div>
-        <div className='mt-20'>
+        <div className="mt-32">
           {/*BLOG HIGHLIGHT SECTION*/}
-          <BlogHighlightSection />
+          <BlogHighlightSection posts={posts} />
+        </div>
+
+        <div className="mt-32 bg-[#00715D] py-10 flex items-center justify-center">
+          <h1 className='text-white text-[28px] font-[500]'>"Empowering Communities, Transforming Lives."</h1>
+        </div>
+
+        <div className="mt-32">
+          {/*FOOTER SECTION*/}
+          <Footer />
         </div>
       </div>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
+  const { draftMode = false } = ctx
+  const client = getClient(draftMode ? { token: readToken } : undefined)
+
+  const [settings, posts = []] = await Promise.all([
+    getSettings(client),
+    getAllPosts(client),
+  ])
+
+  return {
+    props: {
+      posts,
+      settings,
+      draftMode,
+      token: draftMode ? readToken : '',
+    },
+  }
 }

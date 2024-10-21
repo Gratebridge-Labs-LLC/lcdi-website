@@ -32,31 +32,33 @@ export default function PostPage(props: PostPageProps) {
   }
 
   return (
-    <>
-      <PostPageHead settings={settings} post={post} />
+    <div className='bg-[#FDFBE6] py-6'>
+      <>
+        <PostPageHead settings={settings} post={post} />
 
-      <Layout preview={preview} loading={loading}>
-        <Container>
-          <BlogHeader title={title} level={2} />
-          {preview && !post ? (
-            <PostTitle>Loading…</PostTitle>
-          ) : (
-            <>
-              <article>
-                <PostHeader
-                  title={post.title}
-                  coverImage={post.coverImage}
-                  date={post.date}
-                  author={post.author}
-                />
-                <PostBody content={post.content} />
-              </article>
-              <SectionSeparator />
-              {morePosts?.length > 0 && <MoreStories posts={morePosts} />}
-            </>
-          )}
-        </Container>
-      </Layout>
-    </>
+        <Layout preview={preview} loading={loading}>
+          <Container>
+            <BlogHeader title={title} level={2} />
+            {preview && !post ? (
+              <PostTitle>Loading…</PostTitle>
+            ) : (
+              <>
+                <article>
+                  <PostHeader
+                    title={post.title}
+                    coverImage={post.coverImage}
+                    date={post.date}
+                    author={post.author}
+                  />
+                  <PostBody content={post.content} />
+                </article>
+                <SectionSeparator />
+                {morePosts?.length > 0 && <MoreStories posts={morePosts} />}
+              </>
+            )}
+          </Container>
+        </Layout>
+      </>
+    </div>
   )
 }
