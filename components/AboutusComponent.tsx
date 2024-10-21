@@ -6,7 +6,7 @@ export default function AboutusComponent() {
   return (
     <div>
       <div>
-        <h1 className="text-[#3E3838] text-[28px] w-[70%]">
+        <h1 className="text-[#3E3838] md:text-[28px] text-[20px] md:w-[70%]">
           Likeminds Community Development Initiative (LCDI) is a non-profit
           organization based in Nigeria, committed to understanding the
           challenges faced by vulnerable and underserved individuals. Our work
@@ -15,8 +15,8 @@ export default function AboutusComponent() {
           well-being, and self-reliance.
         </h1>
 
-        <div className="flex items-start justify-between mt-20">
-          <div className="w-[50%]">
+        <div className="md:flex items-start justify-between mt-20">
+          <div className="md:w-[50%]">
             <div className="space-y-2">
               <h1 className="text-[#3E3838] font-[600]">Our Mission</h1>
               <h1 className="text-[#787070] font-[400] text-[14px]">
@@ -35,8 +35,8 @@ export default function AboutusComponent() {
               </h1>
             </div>
           </div>
-          <div className=" flex items-center justify-center">
-            <Image src={aboutusimg} alt="About us" className="w-[70%]" />
+          <div className="flex md:items-center md:justify-center md:mt-0 mt-10">
+            <Image src={aboutusimg} alt="About us" className="md:w-[70%]" />
           </div>
         </div>
       </div>

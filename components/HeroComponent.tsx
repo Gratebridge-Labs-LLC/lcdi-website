@@ -6,8 +6,8 @@ import Image from 'next/image'
 export default function HeroComponent() {
   return (
     <div>
-      <div className="flex items-start justify-between">
-        <div className="space-y-4 w-[50%]">
+      <div className="md:flex items-start justify-between">
+        <div className="space-y-4 md:w-[50%]">
           <h1 className="text-[#645D5D] text-[14px]">
             LIKEMINDS COMMUNITY DEVELOPMENT INITIATIVE
           </h1>
@@ -26,8 +26,8 @@ export default function HeroComponent() {
           <Image src={partner} alt="Partner" className='' />
         </div>
 
-        <div className='z-20'>
-          <Image src={heroimg} alt="Food Cause" className='w-[70%]' />
+        <div className='z-20 md:mt-0 mt-10'>
+          <Image src={heroimg} alt="Food Cause" className='md:w-[70%]' />
         </div>
       </div>
     </div>

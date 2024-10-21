@@ -57,9 +57,9 @@ const thematicAreas = [
 export default function ThematicAreas() {
   return (
     <div className="p-4">
-      <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
+      <div className="flex flex-col lg:flex-row md:items-center justify-between mb-6">
         <h1 className="text-3xl font-bold">Our Thematic Areas</h1>
-        <p className="max-w-lg text-[#3D3D3D] text-[14px]">
+        <p className="max-w-lg text-[#3D3D3D] text-[14px] md:mt-0 mt-4">
           LCDI focuses on providing sustainable humanitarian and developmental
           services to targeted groups that ensure the resilience and wellbeing
           of vulnerable and underserved individuals and communities across
@@ -68,7 +68,7 @@ export default function ThematicAreas() {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {thematicAreas.map((area) => (
-          <div key={area.id} className="bg-white border border-black h-[520px] rounded-[40px] flex flex-col p-4">
+          <div key={area.id} className="bg-white border border-black md:h-[520px] h-[480px] rounded-[40px] flex flex-col p-4">
             <Image src={area.image} alt={area.title} />
             <h1 className="mt-4 text-xl font-semibold text-[#262A2C]">{area.title}</h1>
             <p className="mt-2 flex-grow font-[400] text-[14px] text-[#787070]">{area.description}</p>

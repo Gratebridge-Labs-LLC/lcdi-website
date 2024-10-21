@@ -39,13 +39,13 @@ export default function index(props: PageProps) {
 
   return (
     <div className="bg-[#FDFBE6]">
-      <div className=" py-4 max-w-screen-xl mx-auto px-10 w-full">
+      <div className=" py-4 max-w-screen-xl mx-auto md:px-10 px-4 w-full">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Image src={Lcdi} alt="LCDI" className="h-8 w-9" />
             <h1 className="font-[600] text-[19px]">LCDI</h1>
           </div>
-          <div className="flex items-center space-x-6">
+          <div className="md:flex hidden items-center space-x-6">
             <h1
               className="text-[14px] cursor-pointer"
               onClick={() => scrollToSection(heroRef)}
@@ -78,11 +78,11 @@ export default function index(props: PageProps) {
               <ArrowRightIcon color="#fff" stroke="3px" fontSize={18} />
             </div>
           </div>
-          <div></div>
-          <div className="absolute h-[1200px] bg-[#00715D] w-[40%] right-0"></div>
+          <div className="md:block hidden"></div>
+          <div className="absolute h-[1200px] bg-[#00715D] w-[40%] right-0 md:block hidden"></div>
         </div>
 
-        <div className="mt-40" ref={heroRef}>
+        <div className="md:mt-40 mt-20" ref={heroRef}>
           {/*HERO SECTION*/}
           <HeroComponent />
         </div>
@@ -90,7 +90,7 @@ export default function index(props: PageProps) {
           {/*ABOUT US SECTION*/}
           <AboutusComponent />
         </div>
-        <div className="mt-32" ref={thematicRef}>
+        <div className="md:mt-32 mt-20" ref={thematicRef}>
           {/*THEMATIC AREAS SECTION*/}
           <ThematicAreas />
         </div>
@@ -99,8 +99,8 @@ export default function index(props: PageProps) {
           <BlogHighlightSection posts={posts} />
         </div>
 
-        <div className="mt-32 bg-[#00715D] py-10 flex items-center justify-center">
-          <h1 className="text-white text-[28px] font-[500]">
+        <div className="md:mt-32 mt-20 bg-[#00715D] py-10 flex items-center justify-center md:px-0 px-4 rounded-2xl">
+          <h1 className="text-white md:text-[28px] text-[24px] font-[500]">
             "Empowering Communities, Transforming Lives."
           </h1>
         </div>
