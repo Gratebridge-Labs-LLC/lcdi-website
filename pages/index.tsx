@@ -1,6 +1,6 @@
-import React from 'react'
 import Lcdi from '../assets/lcdi.png'
 import Image from 'next/image'
+import React, { useRef } from 'react'
 import { ArrowRightIcon } from '@sanity/icons'
 import HeroComponent from 'components/HeroComponent'
 import AboutusComponent from 'components/AboutusComponent'
@@ -23,6 +23,18 @@ interface Query {
 }
 
 export default function index(props: PageProps) {
+  const heroRef = useRef<HTMLDivElement>(null)
+  const aboutRef = useRef<HTMLDivElement>(null)
+  const thematicRef = useRef<HTMLDivElement>(null)
+  const blogRef = useRef<HTMLDivElement>(null)
+  const contactRef = useRef<HTMLDivElement>(null)
+
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   const { posts, settings, draftMode } = props
 
   return (
@@ -34,10 +46,30 @@ export default function index(props: PageProps) {
             <h1 className="font-[600] text-[19px]">LCDI</h1>
           </div>
           <div className="flex items-center space-x-6">
-            <h1 className="text-[14px] cursor-pointer">Home</h1>
-            <h1 className="text-[14px] cursor-pointer">About Us</h1>
-            <h1 className="text-[14px] cursor-pointer">Services</h1>
-            <h1 className="text-[14px] cursor-pointer">Contact Us</h1>
+            <h1
+              className="text-[14px] cursor-pointer"
+              onClick={() => scrollToSection(heroRef)}
+            >
+              Home
+            </h1>
+            <h1
+              className="text-[14px] cursor-pointer"
+              onClick={() => scrollToSection(aboutRef)}
+            >
+              About Us
+            </h1>
+            <h1
+              className="text-[14px] cursor-pointer"
+              onClick={() => scrollToSection(thematicRef)}
+            >
+              Services
+            </h1>
+            <h1
+              className="text-[14px] cursor-pointer"
+              onClick={() => scrollToSection(contactRef)}
+            >
+              Contact Us
+            </h1>
           </div>
 
           <div className="z-20 flex items-start">
@@ -50,25 +82,27 @@ export default function index(props: PageProps) {
           <div className="absolute h-[1200px] bg-[#00715D] w-[40%] right-0"></div>
         </div>
 
-        <div className="mt-40">
+        <div className="mt-40" ref={heroRef}>
           {/*HERO SECTION*/}
           <HeroComponent />
         </div>
-        <div className="mt-20">
+        <div className="mt-20" ref={aboutRef}>
           {/*ABOUT US SECTION*/}
           <AboutusComponent />
         </div>
-        <div className="mt-32">
+        <div className="mt-32" ref={thematicRef}>
           {/*THEMATIC AREAS SECTION*/}
           <ThematicAreas />
         </div>
-        <div className="mt-32">
+        <div className="mt-32" ref={blogRef}>
           {/*BLOG HIGHLIGHT SECTION*/}
           <BlogHighlightSection posts={posts} />
         </div>
 
         <div className="mt-32 bg-[#00715D] py-10 flex items-center justify-center">
-          <h1 className='text-white text-[28px] font-[500]'>"Empowering Communities, Transforming Lives."</h1>
+          <h1 className="text-white text-[28px] font-[500]">
+            "Empowering Communities, Transforming Lives."
+          </h1>
         </div>
 
         <div className="mt-32">
