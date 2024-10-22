@@ -10,6 +10,8 @@ import SectionSeparator from 'components/SectionSeparator'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 import Error from 'next/error'
+import NavbarComponent from './Reusable/NavbarComponent'
+import Footer from './Footer'
 
 export interface PostPageProps {
   preview?: boolean
@@ -32,7 +34,10 @@ export default function PostPage(props: PostPageProps) {
   }
 
   return (
-    <div className='bg-[#FDFBE6] py-6'>
+    <div className="bg-[#FDFBE6] py-6">
+      <div className="py-4 max-w-screen-xl mx-auto md:px-10 px-4 w-full">
+        <NavbarComponent />
+      </div>
       <>
         <PostPageHead settings={settings} post={post} />
 
@@ -58,6 +63,7 @@ export default function PostPage(props: PostPageProps) {
             )}
           </Container>
         </Layout>
+        <Footer/>
       </>
     </div>
   )

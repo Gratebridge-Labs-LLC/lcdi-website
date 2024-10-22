@@ -35,7 +35,14 @@ export default function AboutusComponent() {
               </h1>
             </div>
           </div>
-          <div className="flex md:items-center md:justify-center md:mt-0 mt-10">
+          <div
+            data-aos="fade-up"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="1000"
+            className="flex md:items-center md:justify-center md:mt-0 mt-10"
+          >
             <Image src={aboutusimg} alt="About us" className="md:w-[70%]" />
           </div>
         </div>

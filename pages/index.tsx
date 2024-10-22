@@ -1,6 +1,6 @@
 import Lcdi from '../assets/lcdi.png'
 import Image from 'next/image'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { ArrowRightIcon } from '@sanity/icons'
 import HeroComponent from 'components/HeroComponent'
 import AboutusComponent from 'components/AboutusComponent'
@@ -12,6 +12,8 @@ import { Post, Settings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import { readToken } from 'lib/sanity.api'
 import Footer from 'components/Footer'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -35,11 +37,17 @@ export default function Index(props: PageProps) {
     }
   }
 
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
+
   const { posts, settings, draftMode } = props
 
   return (
     <div className="bg-[#FDFBE6]">
       <div className=" py-4 max-w-screen-xl mx-auto md:px-10 px-4 w-full">
+        
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Image src={Lcdi} alt="LCDI" className="h-8 w-9" />
