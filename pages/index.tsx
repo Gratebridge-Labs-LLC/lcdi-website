@@ -22,7 +22,7 @@ interface Query {
   [key: string]: string
 }
 
-export default function index(props: PageProps) {
+export default function Index(props: PageProps) {
   const heroRef = useRef<HTMLDivElement>(null)
   const aboutRef = useRef<HTMLDivElement>(null)
   const thematicRef = useRef<HTMLDivElement>(null)
@@ -101,7 +101,7 @@ export default function index(props: PageProps) {
 
         <div className="md:mt-32 mt-20 bg-[#00715D] py-10 flex items-center justify-center md:px-0 px-4 rounded-2xl">
           <h1 className="text-white md:text-[28px] text-[24px] font-[500]">
-            "Empowering Communities, Transforming Lives."
+            Empowering Communities, Transforming Lives.
           </h1>
         </div>
 
